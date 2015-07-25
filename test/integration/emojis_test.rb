@@ -3,7 +3,7 @@ require 'test_helper'
 class EmojisTest < Minitest::Test
 
   def test_emojis
-    response = client.get('emojis')
+    response = client.get('/emojis')
 
     emoji = response.first
     assert_equal "+1", emoji.symbol
@@ -13,7 +13,7 @@ class EmojisTest < Minitest::Test
   private
 
   def client
-    @client ||= GithubMapper::Client.new('http://api.github.com')
+    @client ||= GithubMapper::Client.new('https://api.github.com')
   end
 
 end

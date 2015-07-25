@@ -5,7 +5,16 @@ module GithubMapper
     end
 
     def get(path)
-      [Emoji.new(symbol: "+1", url: "https://assets-cdn.github.com/images/icons/emoji/unicode/1f44d.png?v5")]
+      response = connection.get(path)
+      JSON.parse(response.body).map do |key, value|
+        Emoji.new(symbol: key, url: value)
+      end
+    end
+
+    private
+
+    def connection
+      @connection ||= Faraday.new(:url => @base_url)
     end
   end
 end
