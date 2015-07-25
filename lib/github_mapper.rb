@@ -1,6 +1,7 @@
 require "anima"
 require "faraday"
 require "json"
+require "transproc/all"
 
 require "github_mapper/version"
 require "github_mapper/client"
