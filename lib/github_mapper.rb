@@ -4,12 +4,18 @@ require "json"
 require "transproc/all"
 
 require "github_mapper/version"
+
+require "github_mapper/functions"
+
 require "github_mapper/emoji"
 require "github_mapper/repository"
-require "github_mapper/functions"
+require "github_mapper/user"
+
 require "github_mapper/mapper"
 require "github_mapper/mappers/emoji_mapper"
+require "github_mapper/mappers/user_mapper"
 require "github_mapper/mappers/repository_mapper"
+
 require "github_mapper/client"
 
 module GithubMapper

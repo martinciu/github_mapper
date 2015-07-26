@@ -10,7 +10,7 @@ module GithubMapper
 
     class << self
       def transformation
-        load_json >> mapping >> t(:map_array, factory)
+        load_json >> mapping >> factory
       end
 
       def map(transformation)
@@ -24,11 +24,11 @@ module GithubMapper
       private
 
       def factory
-        t(:factory, @entity)
+        t(:map_array, t(:factory, @entity))
       end
 
       def load_json
-        t(:load_json)
+        t(:is, String, ->(string) { t(:load_json).call(string) })
       end
 
       def t(*args)
@@ -46,6 +46,16 @@ module GithubMapper
   class ArrayMapper < Mapper
     def self.mapping
       t(:map_array, t(:symbolize_keys) >> @map)
+    end
+  end
+
+  class EntityMapper < Mapper
+    def self.mapping
+      t(:symbolize_keys) >> @map
+    end
+
+    def self.factory
+      t(:factory, @entity)
     end
   end
 

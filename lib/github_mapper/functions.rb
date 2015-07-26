@@ -14,10 +14,18 @@ module GithubMapper
       end
     end
 
+    module Mapping
+      def self.mapping(hash, mapper)
+        mapper.new(hash).call
+      end
+    end
+
     import :load, from: JSON, as: :load_json
     import Transproc::HashTransformations
     import Transproc::ArrayTransformations
+    import Transproc::Conditional
     import HashTransformations
     import Factory
+    import Mapping
   end
 end
