@@ -9,8 +9,8 @@ module GithubMapper
     end
 
     module Factory
-      def self.factory(array, klass)
-        array.map { |attributes| klass.new(attributes) }
+      def self.factory(attributes, klass)
+        klass.new(attributes)
       end
     end
 

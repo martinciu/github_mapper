@@ -10,7 +10,7 @@ module GithubMapper
 
     class << self
       def transformation
-        load_json >> mapping >> factory
+        load_json >> mapping >> t(:map_array, factory)
       end
 
       def map(transformation)
