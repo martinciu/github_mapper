@@ -9,7 +9,7 @@ module ApiMapper
     end
 
     def get(path)
-      @router.resolve(:get, path).new(connection.get(path).body).call
+      @router.resolve(:get, path).mapper.new(connection.get(path).body).call
     end
 
     private

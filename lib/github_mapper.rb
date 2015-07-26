@@ -2,6 +2,7 @@ require "anima"
 require "faraday"
 require "json"
 require "transproc/all"
+require "addressable/template"
 
 require "api_mapper/router"
 require "api_mapper/client"
