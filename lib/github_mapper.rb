@@ -10,9 +10,9 @@ require "api_mapper/functions"
 
 require "github_mapper/version"
 
-require "github_mapper/emoji"
-require "github_mapper/repository"
-require "github_mapper/user"
+require "github_mapper/entities/emoji"
+require "github_mapper/entities/repository"
+require "github_mapper/entities/user"
 
 require "github_mapper/mappers/emoji_mapper"
 require "github_mapper/mappers/user_mapper"
