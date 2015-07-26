@@ -4,7 +4,7 @@ class RepositoriesTest < Minitest::Test
 
   def test_repositories
     VCR.use_cassette("repositories") do
-      response = client.get('/repositories')
+      response = client.get('repositories')
       repository = response.first
 
       assert_equal 1, repository.id
