@@ -15,6 +15,8 @@ module GithubMapper
     end
 
     import :load, from: JSON, as: :load_json
+    import Transproc::HashTransformations
+    import Transproc::ArrayTransformations
     import HashTransformations
     import Factory
   end

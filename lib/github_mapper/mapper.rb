@@ -5,12 +5,12 @@ module GithubMapper
     end
 
     def call
-      self.class.transformation.call(@origin)
+       self.class.transformation.call(@origin)
     end
 
     class << self
       def transformation
-        load_json >> @map >> factory
+        load_json >> mapping >> factory
       end
 
       def map(transformation)
@@ -36,4 +36,17 @@ module GithubMapper
       end
     end
   end
+
+  class HashMapper < Mapper
+    def self.mapping
+      @map
+    end
+  end
+
+  class ArrayMapper < Mapper
+    def self.mapping
+      t(:map_array, t(:symbolize_keys) >> @map)
+    end
+  end
+
 end

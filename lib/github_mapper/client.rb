@@ -5,10 +5,17 @@ module GithubMapper
     end
 
     def get(path)
-      EmojiMapper.new(connection.get(path).body).call
+      mapper_for(path).new(connection.get(path).body).call
     end
 
     private
+
+    def mapper_for(path)
+      case path
+        when "/emojis" then EmojiMapper
+        when "/repositories" then RepositoryMapper
+      end
+    end
 
     def connection
       @connection ||= Faraday.new(:url => @base_url)
