@@ -1,4 +1,4 @@
-module GithubMapper
+module ApiMapper
   class Mapper
     def initialize(origin)
       @origin = origin

@@ -21,7 +21,7 @@ class RepositoriesTest < Minitest::Test
   private
 
   def client
-    @client ||= GithubMapper::Client.new('https://api.github.com')
+    @client ||= ApiMapper::Client.new('https://api.github.com', GithubMapper::Router.new)
   end
 
 end
