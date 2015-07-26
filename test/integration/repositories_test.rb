@@ -1,13 +1,13 @@
 require 'test_helper'
 
 class RepositoriesTest < Minitest::Test
+  include TestClient
 
   def test_repositories
     VCR.use_cassette("repositories") do
       repositories = client.get('repositories')
 
       assert_equal 100, repositories.count
-
       repository = repositories.first
 
       assert_equal 1, repository.id
@@ -19,12 +19,6 @@ class RepositoriesTest < Minitest::Test
       assert_equal 1, user.id
       assert_equal "mojombo", user.login
     end
-  end
-
-  private
-
-  def client
-    @client ||= ApiMapper::Client.new('https://api.github.com', GithubMapper::Router.new)
   end
 
 end

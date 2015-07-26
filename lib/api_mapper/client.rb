@@ -1,9 +1,11 @@
 module ApiMapper
   class Client
 
-    def initialize(base_url, router)
+    attr_writer :router
+
+    def initialize(base_url)
       @base_url = base_url
-      @router = router
+      @router = Router.new
     end
 
     def get(path)
