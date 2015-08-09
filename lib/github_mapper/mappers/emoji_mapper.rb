@@ -1,6 +1,6 @@
 module GithubMapper
   class EmojiMapper < ApiMapper::HashMapper
-    map t(:structure, :symbol, :url)
+    attributes symbol: :url
     entity Emoji
   end
 end

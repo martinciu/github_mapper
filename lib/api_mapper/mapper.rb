@@ -10,10 +10,6 @@ module ApiMapper
         mapping >> factory
       end
 
-      def map(transformation)
-        @map = transformation
-      end
-
       def entity(klass)
         @entity = klass
       end
@@ -43,7 +39,6 @@ module ApiMapper
         t(:factory, @entity)
       end
 
-
       def t(*args)
         Functions[*args]
       end
@@ -52,7 +47,8 @@ module ApiMapper
 
   class HashMapper < Mapper
     def self.mapping
-      @map
+      raise "Only one key, pair allowed" if @attributes.count > 1
+      @map = t(:structure, @attributes.first.keys.first, @attributes.first.values.first)
     end
 
     def self.factory
