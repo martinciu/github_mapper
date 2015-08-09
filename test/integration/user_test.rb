@@ -12,11 +12,12 @@ class UserTest < Minitest::Test
   end
 
   def test_get_user
-    VCR.use_cassette("user") do
+    VCR.use_cassette("user_get") do
       user = client.get('user')
 
       assert_equal "martinciu", user.login
       assert_equal 34633, user.id
+      assert_equal true, user.hireable
     end
   end
 
