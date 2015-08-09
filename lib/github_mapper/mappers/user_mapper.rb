@@ -1,6 +1,6 @@
 module GithubMapper
-  class UserMapper < ApiMapper::EntityMapper
-    map t(:accept_keys, [:id, :login])
+  class UserMapper < ApiMapper::Mapper
+    attributes :id, :login
     entity User
   end
 

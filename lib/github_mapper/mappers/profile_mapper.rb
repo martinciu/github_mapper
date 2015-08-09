@@ -1,6 +1,6 @@
 module GithubMapper
-  class ProfileMapper < ApiMapper::EntityMapper
-    map t(:accept_keys, [:id, :login, :hireable])
+  class ProfileMapper < ApiMapper::Mapper
+    attributes :id, :login, :hireable
     entity Profile
   end
 

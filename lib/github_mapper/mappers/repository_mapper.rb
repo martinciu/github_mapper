@@ -1,6 +1,7 @@
 module GithubMapper
   class RepositoryMapper < ApiMapper::ArrayMapper
-    map t(:accept_keys, [:id, :name, :full_name, :owner]) >> t(:map_value, :owner, t(:mapping, UserMapper))
+    attributes :id, :name, :full_name
+    relationship :owner, UserMapper
     entity Repository
   end
 

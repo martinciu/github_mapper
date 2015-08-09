@@ -16,7 +16,7 @@ module ApiMapper
 
     module Mapping
       def self.mapping(hash, mapper)
-        mapper.new(hash).call
+        mapper.new.call(hash)
       end
     end
 

@@ -9,11 +9,11 @@ module ApiMapper
     end
 
     def get(path)
-      @router.resolve(:get, path).mapper.new(connection.get(path).body).call
+      @router.resolve(:get, path).mapper.new.call(JSON.parse(connection.get(path).body))
     end
 
     def patch(path, body)
-      @router.resolve(:patch, path).mapper.new(connection.patch(path, body.to_json).body).call
+      @router.resolve(:patch, path).mapper.new.call(JSON.parse(connection.patch(path, body.to_json).body))
     end
 
     def authorization(authorization)
