@@ -8,12 +8,12 @@ module ApiMapper
       @router = Router.new
     end
 
-    def get(path)
-      @router.resolve(:get, path).mapper.new.call(JSON.parse(connection.get(path).body))
+    def get(path, body = nil)
+      mapper(:get, path).call(response(:get, path).body)
     end
 
-    def patch(path, body)
-      @router.resolve(:patch, path).mapper.new.call(JSON.parse(connection.patch(path, body.to_json).body))
+    def patch(path, body = nil)
+      mapper(:patch, path).call(response(:patch, path, body).body)
     end
 
     def authorization(authorization)
@@ -22,6 +22,14 @@ module ApiMapper
 
     private
 
+    def mapper(method, path)
+      @router.resolve(method, path).mapper.new
+    end
+
+    def response(method, path, body = {})
+      Response.new(connection.send(method, path, body.empty? ? nil : body.to_json))
+    end
+
     def connection
       @connection ||= Faraday.new(url: @base_url) do |conn|
         conn.adapter :net_http
@@ -29,6 +37,16 @@ module ApiMapper
         conn.headers["Accept"] = 'application/json'
         conn.headers["Authorization"] = @authorization if @authorization
       end
+    end
+  end
+
+  class Response
+    def initialize(raw)
+      @raw = raw
+    end
+
+    def body
+      JSON.parse(@raw.body)
     end
   end
 
