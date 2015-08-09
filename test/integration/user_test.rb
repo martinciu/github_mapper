@@ -11,7 +11,7 @@ class UserTest < Minitest::Test
     client.authorization(nil)
   end
 
-  def test_repositories
+  def test_get_user
     VCR.use_cassette("user") do
       user = client.get('user')
 
