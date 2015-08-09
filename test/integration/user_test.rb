@@ -21,4 +21,14 @@ class UserTest < Minitest::Test
     end
   end
 
+  def test_path_user
+    VCR.use_cassette("user_patch") do
+      user = client.patch('user', { hireable: false })
+
+      assert_equal "martinciu", user.login
+      assert_equal 34633, user.id
+      assert_equal false, user.hireable
+    end
+  end
+
 end
