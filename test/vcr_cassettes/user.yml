@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - token secret_token
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Sun, 09 Aug 2015 12:18:34 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4999'
+      X-Ratelimit-Reset:
+      - '1439126314'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Last-Modified:
+      - Wed, 29 Jul 2015 18:52:10 GMT
+      Etag:
+      - W/"e49dc2b81f47246fb699e5896100619c"
+      X-Oauth-Scopes:
+      - repo
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Oauth-Client-Id:
+      - c8e25bd6758672da4847
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.v3
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - deny
+      Content-Security-Policy:
+      - default-src 'none'
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset,
+        X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Github-Request-Id:
+      - 5C3B027D:6D93:134A4F80:55C74519
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Content-Type-Options:
+      - nosniff
+      X-Served-By:
+      - a6882e5cd2513376cb9481dbcd83f3a2
+    body:
+      encoding: ASCII-8BIT
+      string: '{"login":"martinciu","id":34633,"avatar_url":"https://avatars.githubusercontent.com/u/34633?v=3","gravatar_id":"","url":"https://api.github.com/users/martinciu","html_url":"https://github.com/martinciu","followers_url":"https://api.github.com/users/martinciu/followers","following_url":"https://api.github.com/users/martinciu/following{/other_user}","gists_url":"https://api.github.com/users/martinciu/gists{/gist_id}","starred_url":"https://api.github.com/users/martinciu/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/martinciu/subscriptions","organizations_url":"https://api.github.com/users/martinciu/orgs","repos_url":"https://api.github.com/users/martinciu/repos","events_url":"https://api.github.com/users/martinciu/events{/privacy}","received_events_url":"https://api.github.com/users/martinciu/received_events","type":"User","site_admin":false,"name":"Marcin
+        Ciunelis","company":"http://jobandtalent.com","blog":"http://martinciu.com","location":"Barcelona,
+        Spain","email":"marcin.ciunelis@gmail.com","hireable":true,"bio":null,"public_repos":82,"public_gists":7,"followers":29,"following":88,"created_at":"2008-11-15T15:23:35Z","updated_at":"2015-07-29T18:52:10Z"}'
+    http_version: 
+  recorded_at: Sun, 09 Aug 2015 12:18:34 GMT
+recorded_with: VCR 2.9.3
