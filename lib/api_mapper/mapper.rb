@@ -6,22 +6,24 @@ module ApiMapper
     end
 
     class << self
-      def transformation
-        mapping >> factory
+      def attributes(*attributes)
+        @attributes ||= Array(@attributes) + attributes
       end
 
       def entity(klass)
         @entity = klass
       end
 
-      def attributes(*attributes)
-        @attributes ||= Array(@attributes) + attributes
-      end
-
       def relationship(name, mapper = nil)
         @relationships ||= []
         @relationships << Relationship.new(name, mapper)
       end
+
+      def transformation
+        mapping >> factory
+      end
+
+      private
 
       def all_attributes
         Array(@attributes) + Array(@relationships).map(&:name)
@@ -32,8 +34,6 @@ module ApiMapper
           mapping >> t(:map_value, relationship.name, t(:mapping, relationship.mapper))
         end
       end
-
-      private
 
       def factory
         t(:factory, @entity)
