@@ -8,12 +8,16 @@ module ApiMapper
       @router = Router.new
     end
 
-    def get(path, body = nil)
+    def get(path, body = {})
       mapper(:get, path).call(response(:get, path).body)
     end
 
-    def patch(path, body = nil)
+    def patch(path, body = {})
       mapper(:patch, path).call(response(:patch, path, body).body)
+    end
+
+    def post(path, body = {})
+      mapper(:post, path).call(response(:post, path, body).body)
     end
 
     def authorization(authorization)

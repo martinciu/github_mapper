@@ -1,5 +1,5 @@
 module GithubMapper
-  class RepositoryMapper < ApiMapper::Mapper
+  class RepositoriesMapper < ApiMapper::ArrayMapper
     attributes :id, :name, :full_name
     relationship :owner, UserMapper
     entity Repository

@@ -9,6 +9,10 @@ module ApiMapper
         add_route(:patch, path, mapper)
       end
 
+      def post(path, mapper)
+        add_route(:post, path, mapper)
+      end
+
       def add_route(method, mapper, path)
         routes << Route.new(method, mapper, path)
       end
