@@ -1,5 +1,9 @@
 module GithubMapper
   class Repository
-    include Anima.new(:id, :name, :full_name, :owner)
+    include Virtus.model
+    attribute :id, Integer
+    attribute :name
+    attribute :full_name
+    attribute :owner, GithubMapper::User
   end
 end

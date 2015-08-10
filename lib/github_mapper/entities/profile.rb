@@ -1,5 +1,8 @@
 module GithubMapper
   class Profile
-    include Anima.new(:id, :login, :hireable)
+    include Virtus.model
+    attribute :id, Integer
+    attribute :login
+    attribute :hireable, Boolean
   end
 end

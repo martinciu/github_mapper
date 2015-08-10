@@ -3,6 +3,7 @@ require "faraday"
 require "json"
 require "transproc/all"
 require "addressable/template"
+require "virtus"
 
 require "api_mapper/router"
 require "api_mapper/client"
@@ -12,8 +13,8 @@ require "api_mapper/functions"
 require "github_mapper/version"
 
 require "github_mapper/entities/emoji"
-require "github_mapper/entities/repository"
 require "github_mapper/entities/user"
+require "github_mapper/entities/repository"
 require "github_mapper/entities/profile"
 require "github_mapper/entities/issue"
 

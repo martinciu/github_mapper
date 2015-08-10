@@ -31,7 +31,8 @@ class RepositoriesTest < Minitest::Test
 
   def test_create
     VCR.use_cassette("repository_create") do
-      repository = client.post('user/repos', { name: 'dummy' })
+      new_repository = GithubMapper::Repository.new(name: 'dummy')
+      repository = client.post('user/repos', new_repository)
 
       assert_equal "dummy", repository.name
       assert_equal "martinciu/dummy", repository.full_name

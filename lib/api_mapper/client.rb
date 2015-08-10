@@ -8,15 +8,15 @@ module ApiMapper
       @router = Router.new
     end
 
-    def get(path, body = {})
+    def get(path)
       mapper(:get, path).call(response(:get, path).body)
     end
 
-    def patch(path, body = {})
+    def patch(path, body)
       mapper(:patch, path).call(response(:patch, path, body).body)
     end
 
-    def post(path, body = {})
+    def post(path, body)
       mapper(:post, path).call(response(:post, path, body).body)
     end
 
@@ -30,8 +30,8 @@ module ApiMapper
       @router.resolve(method, path).mapper.new
     end
 
-    def response(method, path, body = {})
-      Response.new(connection.send(method, path, body.empty? ? nil : body.to_json))
+    def response(method, path, body = nil)
+      Response.new(connection.send(method, path, Serializer.new(body).call))
     end
 
     def connection
@@ -51,6 +51,24 @@ module ApiMapper
 
     def body
       JSON.parse(@raw.body)
+    end
+  end
+
+  class Serializer
+    def initialize(model)
+      @model = model
+    end
+
+    def call
+      attributes.inject({}) do |response, (key, value)|
+        response.merge(key => value)
+      end.to_json if @model
+    end
+
+    private
+
+    def attributes
+      @model.attributes.select { |_, value| value != nil }
     end
   end
 
